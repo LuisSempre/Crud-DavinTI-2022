@@ -103,7 +103,7 @@ function App() {
                 : createTodo
               : handleWithNewButton
           }
-          className="bg-yellow-500 rounded-md py-2 px-4 my-2 text-white font-bold"
+          className="bg-yellow-500 rounded-md "
         >
           {inputVisbility ? "Confirm" : "+ New task"}
         </button>

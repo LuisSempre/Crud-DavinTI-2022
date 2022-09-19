@@ -5,21 +5,23 @@ import axios from "axios";
 function App() {
   const Todos = ({ todos }) => {
     return (
-      <div className="mx-auto bg-white w-96 h-96 overflow-y-scroll">
+      <div className='mx-auto bg-white w-96 h-96 overflow-y-scroll'>
         {todos.map((todo) => {
           return (
-            <div className="mt-4 -mb-4 flex items-center justify-center">
+            <div className='mt-4 -mb-4 flex items-center justify-center'>
               <button
                 onClick={() => modifyStatusTodo(todo)}
-                className="checkbox"
+                className='w-4 h-4 rounded-lg m-2'
                 style={{ backgroundColor: todo.status ? "#A879E6" : "white" }}
               ></button>
-              <p className="w-60 text-start text-2xl font-bold text-yellow-500">{todo.name}</p>
+              <p className='w-60 text-start text-2xl font-bold text-yellow-500'>
+                {todo.name}
+              </p>
               <button onClick={() => handleWithEditButtonClick(todo)}>
-                <AiOutlineEdit size={20} color={"#64697b"}></AiOutlineEdit>
+                <AiOutlineEdit className="w-8 h-8 fill-yellow-500"></AiOutlineEdit>
               </button>
               <button onClick={() => deleteTodo(todo)}>
-                <AiOutlineDelete size={20} color={"#64697b"}></AiOutlineDelete>
+                <AiOutlineDelete className="w-8 h-8 fill-yellow-500"></AiOutlineDelete>
               </button>
             </div>
           );
@@ -29,7 +31,6 @@ function App() {
   };
 
   async function handleWithNewButton() {
-    console.log("fasfas");
     setInputVisility(!inputVisbility);
   }
   async function handleWithEditButtonClick(todo) {
@@ -39,7 +40,6 @@ function App() {
   async function getTodos() {
     const response = await axios.get("http://localhost:3333/todos");
     setTodos(response.data);
-    console.log(response.data);
   }
   async function editTodo() {
     const response = await axios.put("http://localhost:3333/todos", {
@@ -53,7 +53,7 @@ function App() {
   }
   async function deleteTodo(todo) {
     const response = await axios.delete(
-      `http://localhost:3333/todos/${todo.id}`
+      `http://localhost:3333/todos/${todo.id}`,
     );
     getTodos();
   }
@@ -84,8 +84,8 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-gray-500 w-full mx-auto flex justify-center items-center">
-      <header className="  min-h-screen flex flex-col justify-center items-center">
+    <div className='bg-gray-500 w-full mx-auto flex justify-center items-center'>
+      <header className='  min-h-screen flex flex-col justify-center items-center'>
         <Todos todos={todos}></Todos>
         <input
           value={inputValue}
@@ -93,7 +93,7 @@ function App() {
           onChange={(event) => {
             setInputValue(event.target.value);
           }}
-          className="text-center w-48 h-12 mt-4"
+          className='text-center w-48 h-12 mt-4'
         ></input>
         <button
           onClick={
@@ -103,9 +103,9 @@ function App() {
                 : createTodo
               : handleWithNewButton
           }
-          className="bg-yellow-500 rounded-md py-2 px-4 my-2 text-white font-bold"
+          className='bg-yellow-500 rounded-lg py-4 px-4 text-white font-bold mt-4'
         >
-          {inputVisbility ? "Confirm" : "+ New task"}
+          {inputVisbility ? "Confirmar" : "+ Novo Contato"}
         </button>
       </header>
     </div>

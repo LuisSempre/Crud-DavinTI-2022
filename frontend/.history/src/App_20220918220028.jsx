@@ -1,4 +1,5 @@
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
+import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -29,7 +30,7 @@ function App() {
   };
 
   async function handleWithNewButton() {
-    console.log("fasfas");
+    
     setInputVisility(!inputVisbility);
   }
   async function handleWithEditButtonClick(todo) {
@@ -39,7 +40,6 @@ function App() {
   async function getTodos() {
     const response = await axios.get("http://localhost:3333/todos");
     setTodos(response.data);
-    console.log(response.data);
   }
   async function editTodo() {
     const response = await axios.put("http://localhost:3333/todos", {
@@ -103,7 +103,7 @@ function App() {
                 : createTodo
               : handleWithNewButton
           }
-          className="bg-yellow-500 rounded-md py-2 px-4 my-2 text-white font-bold"
+          className="newTaskButton"
         >
           {inputVisbility ? "Confirm" : "+ New task"}
         </button>

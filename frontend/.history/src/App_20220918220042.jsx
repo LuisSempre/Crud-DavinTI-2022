@@ -1,4 +1,5 @@
 import { AiOutlineEdit, AiOutlineDelete } from "react-icons/ai";
+import "./App.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
@@ -103,7 +104,7 @@ function App() {
                 : createTodo
               : handleWithNewButton
           }
-          className="bg-yellow-500 rounded-md py-2 px-4 my-2 text-white font-bold"
+          className="newTaskButton"
         >
           {inputVisbility ? "Confirm" : "+ New task"}
         </button>
