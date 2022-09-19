@@ -7,6 +7,7 @@ const { response } = require("express");
 
 const prisma = new PrismaClient();
 
+// C
 todosRoutes.post("/todos", async (request, response) => {
   const { name } = request.body;
   const todo = await prisma.todo.create({
@@ -17,11 +18,12 @@ todosRoutes.post("/todos", async (request, response) => {
 
   return response.status(201).json(todo);
 });
-
+// R
 todosRoutes.get("/todos", async (request, response) => {
   const todos = await prisma.todo.findMany();
   return response.status(200).json(todos);
 });
+// U
 
 todosRoutes.put("/todos", async (request, response) => {
   const { name, id, status } = request.body;
@@ -48,7 +50,7 @@ todosRoutes.put("/todos", async (request, response) => {
 
   return response.status(200).json(todo);
 });
-
+// D
 todosRoutes.delete("/todos/:id", async (request, response) => {
   const { id } = request.params;
 
